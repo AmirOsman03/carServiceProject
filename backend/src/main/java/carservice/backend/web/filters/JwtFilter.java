@@ -66,12 +66,13 @@ public class JwtFilter extends OncePerRequestFilter {
                 SecurityContextHolder.getContext().setAuthentication(authToken);
             }
         } catch (JwtException jwtException) {
-            handlerExceptionResolver.resolveException(
-                    request,
-                    response,
-                    null,
-                    jwtException
-            );
+//            handlerExceptionResolver.resolveException(
+//                    request,
+//                    response,
+//                    null,
+//                    jwtException
+//            );
+            filterChain.doFilter(request, response);
             return;
         }
 
