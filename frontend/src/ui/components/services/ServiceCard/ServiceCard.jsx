@@ -59,7 +59,7 @@ const ServiceCard = ({service, onCancel, onStart, onComplete}) => {
                 </CardContent>
                 <Box sx={{display: "flex", justifyContent: "center"}}>
                     <CardActions>
-                        {(role === "ROLE_USER" || role === "ROLE_ADMIN") && (
+                        {(service.status === "CANCELED" && (role === "ROLE_USER" || role === "ROLE_ADMIN")) && (
                             <Button
                                 size="small"
                                 variant="contained"
