@@ -22,11 +22,41 @@ const useServices = () => {
             .catch((error) => console.log(error));
     }, [])
 
+    const onStart = useCallback((id) => {
+        serviceRepository
+            .startService(id)
+            .then(() => {
+                console.log("Successfully started");
+                fetchServices();
+            })
+            .catch((error) => console.log(error));
+    }, [fetchServices]);
+
+    const onCancel = useCallback((id) => {
+        serviceRepository
+            .cancelService(id)
+            .then(() => {
+                console.log("Successfully canceled")
+                fetchServices();
+            })
+            .catch((error) => console.log(error));
+    },[fetchServices]);
+
+    const onComplete = useCallback((id) => {
+        serviceRepository
+            .completeService(id)
+            .then(() => {
+                console.log("Successfully completed")
+                fetchServices();
+            })
+            .catch((error) => console.log(error));
+    },[fetchServices]);
+
     useEffect(() => {
         fetchServices();
     }, [fetchServices])
 
-    return {...state}
+    return {...state, onStart: onStart, onComplete: onComplete, onCancel: onCancel}
 };
 
 export default useServices;

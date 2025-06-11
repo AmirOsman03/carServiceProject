@@ -1,8 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Box, Button, Card, CardActions, CardContent, CardMedia, Chip, Grid, Paper, Typography} from "@mui/material";
 import PersonOutlineTwoToneIcon from '@mui/icons-material/PersonOutlineTwoTone';
+import CancelServiceDialog from "../CancelServiceDialog/CancelServiceDialog.jsx";
+import StartServiceDialog from "../StartServiceDialog/StartServiceDialog.jsx";
+import CloseTwoToneIcon from '@mui/icons-material/CloseTwoTone';
+import PlayCircleOutlineTwoToneIcon from '@mui/icons-material/PlayCircleOutlineTwoTone';
+import CheckTwoToneIcon from '@mui/icons-material/CheckTwoTone';
+import CompleteServiceDialog from "../CompleteServiceDialog/CompleteServiceDialog.jsx";
 
-const ServiceCard = ({service}) => {
+const ServiceCard = ({service, onCancel, onStart, onComplete}) => {
+    const [cancelServiceDialogOpen, setCancelServiceDialogOpen] = useState(false);
+    const [startServiceDialogOpen, setStartServiceDialogOpen] = useState(false);
+    const [completeServiceDialogOpen, setCompleteServiceDialogOpen] = useState(false);
+
     return (
         <>
             <Paper sx={{maxWidth: 345, borderRadius: 2, marginBottom: 4}} elevation={5}>
@@ -45,29 +55,35 @@ const ServiceCard = ({service}) => {
                         }
                     />
                 </CardContent>
-                {/*<Box sx={{display: "flex", justifyContent: "center"}}>*/}
-                {/*    <CardActions>*/}
-                {/*        <Button size="small" variant="contained" color="warning" startIcon={<InfoOutlineTwoToneIcon/>}*/}
-                {/*                onClick={() => navigate(`/cars/${car.id}`)}>Details</Button>*/}
-                {/*        <Button size="small" variant="contained" color="primary" startIcon={<EditTwoToneIcon/>}*/}
-                {/*                onClick={() => setEditCarDialogOpen(true)}>Edit</Button>*/}
-                {/*        <Button size="small" variant="contained" color="error" startIcon={<DeleteOutlineTwoToneIcon/>}*/}
-                {/*                onClick={() => setDeleteCarDialogOpen(true)}>Delete</Button>*/}
-                {/*    </CardActions>*/}
-                {/*</Box>*/}
+                <Box sx={{display: "flex", justifyContent: "center"}}>
+                    <CardActions>
+                        <Button size="small" variant="contained" color="error" startIcon={<CloseTwoToneIcon/>}
+                                onClick={() => setCancelServiceDialogOpen(true)}>Cancel</Button>
+                        <Button size="small" variant="contained" color="success" startIcon={<PlayCircleOutlineTwoToneIcon/>}
+                                onClick={() => setStartServiceDialogOpen(true)}>Start</Button>
+                        <Button size="small" variant="contained" color="primary" startIcon={<CheckTwoToneIcon/>}
+                                onClick={() => setCompleteServiceDialogOpen(true)}>Complete</Button>
+                    </CardActions>
+                </Box>
             </Paper>
-            {/*<EditCarDialog*/}
-            {/*    open={editCarDialogOpen}*/}
-            {/*    onClose={() => setEditCarDialogOpen(false)}*/}
-            {/*    car={car}*/}
-            {/*    onEdit={onEdit}*/}
-            {/*/>*/}
-            {/*<DeleteCarDialog*/}
-            {/*    open={deleteCarDialogOpen}*/}
-            {/*    onClose={() => setDeleteCarDialogOpen(false)}*/}
-            {/*    car={car}*/}
-            {/*    onDelete={onDelete}*/}
-            {/*/>*/}
+            <CancelServiceDialog
+                open={cancelServiceDialogOpen}
+                onClose={() => setCancelServiceDialogOpen(false)}
+                service={service}
+                onCancel={onCancel}
+            />
+            <StartServiceDialog
+                open={startServiceDialogOpen}
+                onClose={() => setStartServiceDialogOpen(false)}
+                service={service}
+                onStart={onStart}
+            />
+            <CompleteServiceDialog
+                open={completeServiceDialogOpen}
+                onClose={() => setCompleteServiceDialogOpen(false)}
+                service={service}
+                onComplete={onComplete}
+            />
         </>
     );
 };
