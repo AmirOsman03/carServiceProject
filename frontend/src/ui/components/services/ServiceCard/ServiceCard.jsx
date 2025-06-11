@@ -70,7 +70,7 @@ const ServiceCard = ({service, onCancel, onStart, onComplete}) => {
                                 Cancel
                             </Button>
                         )}
-                        {(role === "ROLE_MECHANIC" || role === "ROLE_ADMIN") && (
+                        {(service.status === "SCHEDULED" && (role === "ROLE_MECHANIC" || role === "ROLE_ADMIN")) && (
                             <Button
                                 size="small"
                                 variant="contained"
@@ -81,7 +81,7 @@ const ServiceCard = ({service, onCancel, onStart, onComplete}) => {
                                 Start
                             </Button>
                         )}
-                        {(role === "ROLE_MECHANIC" || role === "ROLE_ADMIN") && (
+                        {((service.status === "SCHEDULED" || service.status === "IN_PROGRESS") && (role === "ROLE_MECHANIC" || role === "ROLE_ADMIN")) && (
                             <Button
                                 size="small"
                                 variant="contained"
