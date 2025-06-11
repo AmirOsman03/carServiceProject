@@ -7,6 +7,7 @@ import carservice.backend.model.enums.ServiceType;
 import carservice.backend.repository.CarRepository;
 import carservice.backend.repository.ServiceRepository;
 import carservice.backend.service.domain.ServiceService;
+import org.springframework.expression.ExpressionException;
 
 import java.util.List;
 
@@ -33,8 +34,13 @@ public class ServiceServiceImpl implements ServiceService {
             throw new IllegalArgumentException("Service does not belong to the specified car");
         }
 
+        int calcNextService = calculateNextService(type) + car.getCurrentKm();
+
         service.setPrice(calculatePrice(type));
-        service.setNextServiceKm(calculateNextService(type));
+        service.setNextServiceKm(calcNextService);
+
+        System.out.println("Car current KM: " + car.getCurrentKm());
+        System.out.println("Next service KM (calculated): " + (calculateNextService(type) + car.getCurrentKm()));
 
         return serviceRepository.save(service);
     }
@@ -59,64 +65,27 @@ public class ServiceServiceImpl implements ServiceService {
     }
 
     @Override
-    public Service confirm(Long carId, Long serviceId) {
-        Car car = carRepository.findById(carId)
-                .orElseThrow(() -> new IllegalArgumentException("Car not found"));
-
+    public Service cancel(Long serviceId) {
         Service service = serviceRepository.findById(serviceId)
-                .orElseThrow(() -> new IllegalArgumentException("Service not found"));
-
-        if (!service.getCar().getId().equals(car.getId())) {
-            throw new IllegalArgumentException("Service does not belong to the specified car");
-        }
-
-        service.setStatus(ServiceStatus.CONFIRMED);
-        return serviceRepository.save(service);
-    }
-
-    @Override
-    public Service cancel(Long carId, Long serviceId) {
-        Car car = carRepository.findById(carId)
-                .orElseThrow(() -> new IllegalArgumentException("Car not found"));
-
-        Service service = serviceRepository.findById(serviceId)
-                .orElseThrow(() -> new IllegalArgumentException("Service not found"));
-
-        if (!service.getCar().getId().equals(car.getId())) {
-            throw new IllegalArgumentException("Service does not belong to the specified car");
-        }
+                .orElseThrow(() -> new ExpressionException("Service with ID " + serviceId + " not found."));
 
         service.setStatus(ServiceStatus.CANCELLED);
         return serviceRepository.save(service);
     }
 
     @Override
-    public Service start(Long carId, Long serviceId) {
-        Car car = carRepository.findById(carId)
-                .orElseThrow(() -> new IllegalArgumentException("Car not found"));
-
+    public Service start(Long serviceId) {
         Service service = serviceRepository.findById(serviceId)
-                .orElseThrow(() -> new IllegalArgumentException("Service not found"));
-
-        if (!service.getCar().getId().equals(car.getId())) {
-            throw new IllegalArgumentException("Service does not belong to the specified car");
-        }
+                .orElseThrow(() -> new ExpressionException("Service with ID " + serviceId + " not found."));
 
         service.setStatus(ServiceStatus.IN_PROGRESS);
         return serviceRepository.save(service);
     }
 
     @Override
-    public Service complete(Long carId, Long serviceId) {
-        Car car = carRepository.findById(carId)
-                .orElseThrow(() -> new IllegalArgumentException("Car not found"));
-
+    public Service complete(Long serviceId) {
         Service service = serviceRepository.findById(serviceId)
-                .orElseThrow(() -> new IllegalArgumentException("Service not found"));
-
-        if (!service.getCar().getId().equals(car.getId())) {
-            throw new IllegalArgumentException("Service does not belong to the specified car");
-        }
+                .orElseThrow(() -> new ExpressionException("Service with ID " + serviceId + " not found."));
 
         service.setStatus(ServiceStatus.COMPLETED);
         return serviceRepository.save(service);

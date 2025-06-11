@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public record DisplayServiceDto(
+        Long id,
         String name,
         String location,
         int price,
@@ -21,6 +22,7 @@ public record DisplayServiceDto(
 ) {
     public static DisplayServiceDto from(Service service) {
         return new DisplayServiceDto(
+                service.getId(),
                 service.getName(),
                 service.getLocation(),
                 service.getPrice(),

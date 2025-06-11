@@ -7,8 +7,10 @@ import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import {useNavigate} from "react-router";
 import InfoOutlineTwoToneIcon from '@mui/icons-material/InfoOutlineTwoTone';
 import DirectionsCarFilledTwoToneIcon from '@mui/icons-material/DirectionsCarFilledTwoTone';
+import useUserDetails from "../../../../hooks/useUserDetails.js";
 
 const CarCard = ({car, onEdit, onDelete}) => {
+    const {role} = useUserDetails();
     const navigate = useNavigate();
     const [editCarDialogOpen, setEditCarDialogOpen] = useState(false);
     const [deleteCarDialogOpen, setDeleteCarDialogOpen] = useState(false);
@@ -35,12 +37,26 @@ const CarCard = ({car, onEdit, onDelete}) => {
                 </CardContent>
                 <Box sx={{display: "flex", justifyContent: "center"}}>
                     <CardActions>
-                        <Button size="small" variant="contained" color="warning" startIcon={<InfoOutlineTwoToneIcon/>}
-                                onClick={() => navigate(`/cars/${car.id}`)}>Details</Button>
-                        <Button size="small" variant="contained" color="primary" startIcon={<EditTwoToneIcon/>}
-                                onClick={() => setEditCarDialogOpen(true)}>Edit</Button>
-                        <Button size="small" variant="contained" color="error" startIcon={<DeleteOutlineTwoToneIcon/>}
-                                onClick={() => setDeleteCarDialogOpen(true)}>Delete</Button>
+                        {(role === "ROLE_USER" || role === "ROLE_ADMIN") && (
+                            <Button size="small" variant="contained" color="warning"
+                                    startIcon={<InfoOutlineTwoToneIcon/>}
+                                    onClick={() => navigate(`/cars/${car.id}`)}>
+                                Details
+                            </Button>
+                        )}
+                        {(role === "ROLE_USER" || role === "ROLE_ADMIN") && (
+                            <Button size="small" variant="contained" color="primary" startIcon={<EditTwoToneIcon/>}
+                                    onClick={() => setEditCarDialogOpen(true)}>
+                                Edit
+                            </Button>
+                        )}
+                        {(role === "ROLE_USER" || role === "ROLE_ADMIN") && (
+                            <Button size="small" variant="contained" color="error"
+                                    startIcon={<DeleteOutlineTwoToneIcon/>}
+                                    onClick={() => setDeleteCarDialogOpen(true)}>
+                                Delete
+                            </Button>
+                        )}
                     </CardActions>
                 </Box>
             </Paper>

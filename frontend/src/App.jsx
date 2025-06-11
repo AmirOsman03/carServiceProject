@@ -7,6 +7,7 @@ import HomePage from "./ui/pages/HomePage/HomePage.jsx";
 import ProtectedRoute from "./ui/routing/ProtectedRoute/ProtectedRoute.jsx";
 import CarsPage from "./ui/pages/CarsPage/CarsPage.jsx";
 import CarDetails from "./ui/components/cars/CarDetails/CarDetails.jsx";
+import ServicesPage from "./ui/pages/ServicesPage/ServicesPage.jsx";
 
 const App = () => {
     return (
@@ -19,7 +20,7 @@ const App = () => {
                     <Route element={<ProtectedRoute/>}>
                         <Route path="cars" element={<CarsPage/>}/>
                         <Route path="cars/:id" element={<CarDetails/>}/>
-                        {/*<Route path="services" element={<ServicePage/>}/>*/}
+                        <Route path="services" element={<ServicesPage/>}/>
                     </Route>
                 </Route>
             </Routes>

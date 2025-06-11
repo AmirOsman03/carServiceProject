@@ -22,28 +22,19 @@ public class ServiceController {
         return serviceApplication.findAll();
     }
 
-    @PostMapping("/{carId}/{serviceId}/confirm")
-    public ResponseEntity<DisplayServiceDto> confirmService(@PathVariable Long carId,
-                                                            @PathVariable Long serviceId) {
-        return ResponseEntity.ok(serviceApplication.confirm(carId, serviceId));
+    @PostMapping("/{serviceId}/cancel")
+    public ResponseEntity<DisplayServiceDto> cancelService(@PathVariable Long serviceId) {
+        return ResponseEntity.ok(serviceApplication.cancel(serviceId));
     }
 
-    @PostMapping("/{carId}/{serviceId}/cancel")
-    public ResponseEntity<DisplayServiceDto> cancelService(@PathVariable Long carId,
-                                                            @PathVariable Long serviceId) {
-        return ResponseEntity.ok(serviceApplication.cancel(carId, serviceId));
+    @PostMapping("/{serviceId}/start")
+    public ResponseEntity<DisplayServiceDto> startService(@PathVariable Long serviceId) {
+        return ResponseEntity.ok(serviceApplication.start(serviceId));
     }
 
-    @PostMapping("/{carId}/{serviceId}/start")
-    public ResponseEntity<DisplayServiceDto> startService(@PathVariable Long carId,
-                                                            @PathVariable Long serviceId) {
-        return ResponseEntity.ok(serviceApplication.start(carId, serviceId));
-    }
-
-    @PostMapping("/{carId}/{serviceId}/complete")
-    public ResponseEntity<DisplayServiceDto> completeService(@PathVariable Long carId,
-                                                            @PathVariable Long serviceId) {
-        return ResponseEntity.ok(serviceApplication.complete(carId, serviceId));
+    @PostMapping("/{serviceId}/complete")
+    public ResponseEntity<DisplayServiceDto> completeService(@PathVariable Long serviceId) {
+        return ResponseEntity.ok(serviceApplication.complete(serviceId));
     }
 
 }

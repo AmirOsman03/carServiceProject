@@ -70,7 +70,7 @@ public class CarController {
         return ResponseEntity.notFound().build();
     }
 
-    @PostMapping("addToService/{carId}/")
+    @PostMapping("/addToService/{carId}")
     public ResponseEntity<DisplayServiceDto> createService(
             @PathVariable Long carId,
             @RequestBody CreateServiceDto serviceDto) {

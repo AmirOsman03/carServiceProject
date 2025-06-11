@@ -11,13 +11,11 @@ public interface ServiceApplication {
 
     DisplayServiceDto updatePrice(Long carId, Long serviceId, ServiceType type);
 
-    DisplayServiceDto confirm(Long carId, Long serviceId);
+    DisplayServiceDto cancel(Long serviceId);
 
-    DisplayServiceDto cancel(Long carId, Long serviceId);
+    DisplayServiceDto start(Long serviceId);
 
-    DisplayServiceDto start(Long carId, Long serviceId);
-
-    DisplayServiceDto complete(Long carId, Long serviceId);
+    DisplayServiceDto complete(Long serviceId);
 
     DisplayServiceDto createService(CreateServiceDto service, Long carId);
 
