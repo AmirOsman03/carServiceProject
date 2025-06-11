@@ -7,8 +7,10 @@ import CloseTwoToneIcon from '@mui/icons-material/CloseTwoTone';
 import PlayCircleOutlineTwoToneIcon from '@mui/icons-material/PlayCircleOutlineTwoTone';
 import CheckTwoToneIcon from '@mui/icons-material/CheckTwoTone';
 import CompleteServiceDialog from "../CompleteServiceDialog/CompleteServiceDialog.jsx";
+import useUserDetails from "../../../../hooks/useUserDetails.js";
 
 const ServiceCard = ({service, onCancel, onStart, onComplete}) => {
+    const {role} = useUserDetails();
     const [cancelServiceDialogOpen, setCancelServiceDialogOpen] = useState(false);
     const [startServiceDialogOpen, setStartServiceDialogOpen] = useState(false);
     const [completeServiceDialogOpen, setCompleteServiceDialogOpen] = useState(false);
@@ -22,7 +24,7 @@ const ServiceCard = ({service, onCancel, onStart, onComplete}) => {
                         sx={{fontSize: 170, marginTop: 2}}
                     />
                 </Box>
-                <CardContent >
+                <CardContent>
                     <Typography gutterBottom variant="h5" component="div" align="center">
                         {service.name}
                     </Typography>
@@ -43,7 +45,7 @@ const ServiceCard = ({service, onCancel, onStart, onComplete}) => {
                     </Typography>
                     <Chip
                         label={service.status}
-                        sx={{ display: "flex", justifyContent: "center", mt: 2 }}
+                        sx={{display: "flex", justifyContent: "center", mt: 2}}
                         color={
                             service.status === "SCHEDULED"
                                 ? "primary"
@@ -57,12 +59,39 @@ const ServiceCard = ({service, onCancel, onStart, onComplete}) => {
                 </CardContent>
                 <Box sx={{display: "flex", justifyContent: "center"}}>
                     <CardActions>
-                        <Button size="small" variant="contained" color="error" startIcon={<CloseTwoToneIcon/>}
-                                onClick={() => setCancelServiceDialogOpen(true)}>Cancel</Button>
-                        <Button size="small" variant="contained" color="success" startIcon={<PlayCircleOutlineTwoToneIcon/>}
-                                onClick={() => setStartServiceDialogOpen(true)}>Start</Button>
-                        <Button size="small" variant="contained" color="primary" startIcon={<CheckTwoToneIcon/>}
-                                onClick={() => setCompleteServiceDialogOpen(true)}>Complete</Button>
+                        {(role === "ROLE_USER" || role === "ROLE_ADMIN") && (
+                            <Button
+                                size="small"
+                                variant="contained"
+                                color="error"
+                                startIcon={<CloseTwoToneIcon/>}
+                                onClick={() => setCancelServiceDialogOpen(true)}
+                            >
+                                Cancel
+                            </Button>
+                        )}
+                        {(role === "ROLE_MECHANIC" || role === "ROLE_ADMIN") && (
+                            <Button
+                                size="small"
+                                variant="contained"
+                                color="success"
+                                startIcon={<PlayCircleOutlineTwoToneIcon/>}
+                                onClick={() => setStartServiceDialogOpen(true)}
+                            >
+                                Start
+                            </Button>
+                        )}
+                        {(role === "ROLE_MECHANIC" || role === "ROLE_ADMIN") && (
+                            <Button
+                                size="small"
+                                variant="contained"
+                                color="primary"
+                                startIcon={<CheckTwoToneIcon/>}
+                                onClick={() => setCompleteServiceDialogOpen(true)}
+                            >
+                                Complete
+                            </Button>
+                        )}
                     </CardActions>
                 </Box>
             </Paper>

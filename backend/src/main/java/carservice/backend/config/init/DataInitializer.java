@@ -29,16 +29,16 @@ public class DataInitializer {
         this.passwordEncoder = passwordEncoder;
     }
 
-//    @PostConstruct
+    @PostConstruct
     public void init() {
-        User amir = new User(
-                "amir",
-                passwordEncoder.encode("amir"),
-                "Amir",
-                "Osman",
+        User admin = new User(
+                "admin",
+                passwordEncoder.encode("admin"),
+                "Admin",
+                "Admin",
                 Role.ROLE_ADMIN
         );
-        userRepository.save(amir);
+        userRepository.save(admin);
 
         User john = new User(
                 "john",
@@ -48,6 +48,15 @@ public class DataInitializer {
                 Role.ROLE_MECHANIC
         );
         userRepository.save(john);
+
+        User user = new User(
+                "user",
+                passwordEncoder.encode("user"),
+                "User",
+                "User",
+                Role.ROLE_USER
+        );
+        userRepository.save(user);
     }
 
 }

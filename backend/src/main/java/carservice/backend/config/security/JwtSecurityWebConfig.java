@@ -66,12 +66,12 @@ public class JwtSecurityWebConfig {
                                         "/api/cars/addToService/{carId}",
                                         "/api/cars/delete/{id}",
                                         "/api/cars/edit/{id}",
-                                        "/api/services/{serviceId}/cancel"
+                                        "/api/services/{serviceId}/cancel",
+                                        "/api/cars/{id}"
                                 ).hasAnyRole("USER", "ADMIN")
                                 .requestMatchers(
                                         "/api/services/{serviceId}/start",
-                                        "/api/services/{serviceId}/complete",
-                                        "/api/services/{serviceId}/cancel"
+                                        "/api/services/{serviceId}/complete"
                                 ).hasAnyRole("MECHANIC", "ADMIN")
                                 .anyRequest().hasRole("ADMIN")
                 )
