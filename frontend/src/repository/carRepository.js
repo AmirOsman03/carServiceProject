@@ -18,7 +18,14 @@ const carRepository = {
         return await axiosInstance.delete(`/cars/delete/${id}`);
     },
     addToService: async (carId, data) => {
-        return await axiosInstance.post(`/cars/addToService/${carId}/`, data);
+        try {
+            const response = await axiosInstance.post(`/cars/addToService/${carId}`, data);
+            return response.data; // Return only data part if that's what you want
+        } catch (error) {
+            // You could log it or rethrow it
+            console.error("Error adding to service:", error);
+            throw error; // Rethrow so the caller can handle it
+        }
     },
 };
 

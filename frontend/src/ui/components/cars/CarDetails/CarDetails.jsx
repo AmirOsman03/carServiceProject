@@ -30,12 +30,20 @@ import useCarDetails from "../../../../hooks/useCarDetails.js";
 import ManageAccountsTwoToneIcon from '@mui/icons-material/ManageAccountsTwoTone';
 import SelectServiceDialog from "../../services/SelectServiceDialog/SelectServiceDialog.jsx";
 import DirectionsCarFilledTwoToneIcon from "@mui/icons-material/DirectionsCarFilledTwoTone";
+import useAddToService from "../../../../hooks/useAddToService.js";
 
 const CarDetails = () => {
     const {id} = useParams();
     const {car} = useCarDetails(id);
     const navigate = useNavigate();
     const [selectServiceDialogOpen, setSelectServiceDialogOpen] = useState(false);
+    const {addToService, error} = useAddToService();
+
+    const handleChange = (carId, serviceData) => {
+        addToService(carId, serviceData)
+            .then(() => console.log("Successfully added to service"))
+            .catch(() => console.log(error));
+    };
 
     if (!car) {
         return (
@@ -115,19 +123,6 @@ const CarDetails = () => {
                                 >
                                     Select Service
                                 </Button>
-                                <Button
-                                    variant="outlined"
-                                    color="secondary"
-                                    startIcon={<FavoriteBorder/>}
-                                >
-                                    Wishlist
-                                </Button>
-                                <Button
-                                    variant="outlined"
-                                    startIcon={<Share/>}
-                                >
-                                    Share
-                                </Button>
                             </Stack>
                             <Button
                                 variant="outlined"
@@ -144,7 +139,7 @@ const CarDetails = () => {
                 open={selectServiceDialogOpen}
                 onClose={() => setSelectServiceDialogOpen(false)}
                 car={car}
-                // addToService={addToService}
+                addToService={handleChange}
             />
         </>
     );

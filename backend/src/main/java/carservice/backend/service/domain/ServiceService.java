@@ -9,13 +9,11 @@ public interface ServiceService {
 
     Service updatePrice(Long carId, Long serviceId, ServiceType type);
 
-    Service confirm(Long carId, Long serviceId);
+    Service cancel(Long serviceId);
 
-    Service cancel(Long carId, Long serviceId);
+    Service start(Long serviceId);
 
-    Service start(Long carId, Long serviceId);
-
-    Service complete(Long carId, Long serviceId);
+    Service complete(Long serviceId);
 
     Service createService(Service service);
 

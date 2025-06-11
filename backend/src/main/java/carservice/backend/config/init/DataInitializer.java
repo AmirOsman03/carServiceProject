@@ -18,22 +18,19 @@ import java.util.List;
 @Component
 public class DataInitializer {
 
-    private final CarRepository carRepository;
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
     public DataInitializer(
-            CarRepository carRepository, UserRepository userRepository,
+            UserRepository userRepository,
             PasswordEncoder passwordEncoder
     ) {
-        this.carRepository = carRepository;
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
 //    @PostConstruct
     public void init() {
-
         User amir = new User(
                 "amir",
                 passwordEncoder.encode("amir"),
@@ -43,33 +40,14 @@ public class DataInitializer {
         );
         userRepository.save(amir);
 
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            Car car = new Car(
-                    String.format("Manufacturer %d", i),
-                    String.format("Model %d", i),
-                    2010 + i,
-                    10000 * i,
-                    amir
-            );
-            cars.add(car);
-        }
-
-        List<Service> services = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            Service service = new Service(
-                    String.format("Service %d", i),
-                    String.format("Location %d", i),
-                    15000,
-                    150000,
-                    ServiceType.GENERAL_CHECKUP,
-                    ServiceStatus.SCHEDULED,
-                    cars.get(1)
-            );
-            services.add(service);
-        }
-
-        carRepository.saveAll(cars);
+        User john = new User(
+                "john",
+                passwordEncoder.encode("john"),
+                "John",
+                "Test",
+                Role.ROLE_MECHANIC
+        );
+        userRepository.save(john);
     }
 
 }

@@ -28,23 +28,18 @@ public class ServiceApplicationImpl implements ServiceApplication {
     }
 
     @Override
-    public DisplayServiceDto confirm(Long carId, Long serviceId) {
-        return DisplayServiceDto.from(serviceService.confirm(carId, serviceId));
+    public DisplayServiceDto cancel(Long serviceId) {
+        return DisplayServiceDto.from(serviceService.cancel(serviceId));
     }
 
     @Override
-    public DisplayServiceDto cancel(Long carId, Long serviceId) {
-        return DisplayServiceDto.from(serviceService.cancel(carId, serviceId));
+    public DisplayServiceDto start(Long serviceId) {
+        return DisplayServiceDto.from(serviceService.start(serviceId));
     }
 
     @Override
-    public DisplayServiceDto start(Long carId, Long serviceId) {
-        return DisplayServiceDto.from(serviceService.start(carId, serviceId));
-    }
-
-    @Override
-    public DisplayServiceDto complete(Long carId, Long serviceId) {
-        return DisplayServiceDto.from(serviceService.complete(carId, serviceId));
+    public DisplayServiceDto complete(Long serviceId) {
+        return DisplayServiceDto.from(serviceService.complete(serviceId));
     }
 
     @Override

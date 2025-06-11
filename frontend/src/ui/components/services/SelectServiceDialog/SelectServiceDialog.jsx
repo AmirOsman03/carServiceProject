@@ -1,12 +1,13 @@
-import React, {useState} from 'react';
-import {Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField} from "@mui/material";
-import ManageAccountsTwoToneIcon from '@mui/icons-material/ManageAccountsTwoTone';
+import {useState} from "react";
+import {Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, MenuItem, TextField} from "@mui/material";
+import ManageAccountsTwoToneIcon from "@mui/icons-material/ManageAccountsTwoTone";
 
 const SelectServiceDialog = ({open, onClose, car, addToService}) => {
+    const serviceTypes = ["OIL_CHANGE", "TIRE_CHANGE", "BRAKE_SERVICE", "GENERAL_CHECKUP"];
     const [formData, setFormData] = useState({
-        "name": "",
-        "location": "",
-        "type": "",
+        name: "",
+        location: "",
+        type: "",
     });
 
     const handleChange = (event) => {
@@ -15,7 +16,7 @@ const SelectServiceDialog = ({open, onClose, car, addToService}) => {
     };
 
     const handleSubmit = () => {
-        addToService(car.id, formData)
+        addToService(car.id, formData);
         setFormData(formData);
         onClose();
     };
@@ -48,13 +49,20 @@ const SelectServiceDialog = ({open, onClose, car, addToService}) => {
                     fullWidth
                 />
                 <TextField
+                    select
                     margin="dense"
                     label="Type"
                     name="type"
                     value={formData.type}
                     onChange={handleChange}
                     fullWidth
-                />
+                >
+                    {serviceTypes.map((option) => (
+                        <MenuItem key={option} value={option}>
+                            {option}
+                        </MenuItem>
+                    ))}
+                </TextField>
             </DialogContent>
             <Box sx={{display: "flex", justifyContent: "center", marginBottom: 2}}>
                 <DialogActions>
@@ -65,7 +73,8 @@ const SelectServiceDialog = ({open, onClose, car, addToService}) => {
                 </DialogActions>
             </Box>
         </Dialog>
-    );
+    )
+        ;
 };
 
 export default SelectServiceDialog;
