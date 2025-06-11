@@ -1,4 +1,5 @@
 package carservice.backend.config.security;
+
 import carservice.backend.security.CustomUsernamePasswordAuthenticationProvider;
 import carservice.backend.web.filters.JwtFilter;
 import org.springframework.context.annotation.Bean;
@@ -54,20 +55,25 @@ public class JwtSecurityWebConfig {
                                         "/v3/api-docs/**",
                                         "/api/user/register",
                                         "/api/user/login",
-                                        "/api/cars/**"
+                                        "/api/services",
+                                        "/api/cars"
                                 ).permitAll()
-                                .anyRequest().permitAll()
-//                                .requestMatchers(
-//                                        "/api/services/create/{carId}",
-//                                        "/api/services/confirm/{carId}",
-//                                        "/api/services/cancel/{carId}"
-//                                ).hasRole("USER")
-//                                .requestMatchers(
-//                                        "/api/services/{carId}/{serviceId}/start",
-//                                        "/api/services/{carId}/{serviceId}/complete"
-//                                ).hasRole("MECHANIC")
-//                                .anyRequest()
-//                                .hasRole("ADMIN")
+                                .requestMatchers(
+                                        "/api/user/me"
+                                ).authenticated()
+                                .requestMatchers(
+                                        "/api/cars/add",
+                                        "/api/cars/addToService/{carId}",
+                                        "/api/cars/delete/{id}",
+                                        "/api/cars/edit/{id}",
+                                        "/api/services/{serviceId}/cancel"
+                                ).hasAnyRole("USER", "ADMIN")
+                                .requestMatchers(
+                                        "/api/services/{serviceId}/start",
+                                        "/api/services/{serviceId}/complete",
+                                        "/api/services/{serviceId}/cancel"
+                                ).hasAnyRole("MECHANIC", "ADMIN")
+                                .anyRequest().hasRole("ADMIN")
                 )
                 .sessionManagement(sessionManagementConfigurer ->
                         sessionManagementConfigurer.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
