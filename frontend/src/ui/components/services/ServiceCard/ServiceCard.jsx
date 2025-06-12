@@ -28,18 +28,21 @@ const ServiceCard = ({service, onCancel, onStart, onComplete}) => {
                     <Typography gutterBottom variant="h5" component="div" align="center">
                         {service.username}
                     </Typography>
-                    <Typography variant="body1" sx={{color: 'text.secondary'}} align="center">
-                        {service.manufacturer}
-                    </Typography>
-                    <Typography variant="body1" sx={{color: 'text.secondary'}} align="center">
-                        <b>Price:</b> {service.price} den
-                    </Typography>
-                    <Typography variant="body1" sx={{color: 'text.secondary'}} align="center">
-                        <b>Next service:</b> {service.nextServiceKm} km
-                    </Typography>
-                    <Typography variant="body1" sx={{color: 'text.secondary'}} align="center">
-                        <b>Type service:</b> {service.type}
-                    </Typography>
+                    {/*<Typography variant="body1" sx={{color: 'text.secondary'}} align="center">*/}
+                    {/*    {service.manufacturer}*/}
+                    {/*</Typography>*/}
+                    <Box sx={{display: "flex", justifyContent: "center", my: 1}}>
+                        <Chip label={`${service.manufacturer}`} color="default" variant="inlined" sx={{px:3}}/>
+                    </Box>
+                    <Box sx={{display: "flex", justifyContent: "center", my: 1}}>
+                        <Chip label={`Next service: ${service.nextServiceKm} km`} color="warning" variant="inlined" sx={{px:3}}/>
+                    </Box>
+                    <Box sx={{display: "flex", justifyContent: "center", my: 1}}>
+                        <Chip label={`Type service: ${service.type}`} color="error" variant="inline" sx={{px:3}}/>
+                    </Box>
+                    <Box sx={{display: "flex", justifyContent: "center", my: 1}}>
+                        <Chip label={`Price: ${service.price} den`} color="success" variant="outlined" sx={{px:3}}/>
+                    </Box>
                     <Chip
                         label={service.status}
                         sx={{display: "flex", justifyContent: "center", mt: 2}}
@@ -54,7 +57,7 @@ const ServiceCard = ({service, onCancel, onStart, onComplete}) => {
                         }
                     />
                 </CardContent>
-                <Box sx={{display: "flex", justifyContent: "center"}}>
+                <Box sx={{display: "flex", justifyContent: "center", pb:1}}>
                     <CardActions>
                         {(service.status === "SCHEDULED" && (role === "ROLE_USER" || role === "ROLE_ADMIN")) && (
                             <Button
