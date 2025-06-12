@@ -36,7 +36,7 @@ const CarCard = ({car, onEdit, onDelete}) => {
                     </Typography>
                 </CardContent>
                 <Box sx={{display: "flex", justifyContent: "center"}}>
-                    <CardActions>
+                    <CardActions sx={{pb:2}}>
                         {(role === "ROLE_USER" || role === "ROLE_ADMIN") && (
                             <Button size="small" variant="contained" color="warning"
                                     startIcon={<InfoOutlineTwoToneIcon/>}
