@@ -85,7 +85,6 @@
 | Endpoint                       | Метод | Опис                          | Дозволени улоги         |
 |-------------------------------|--------|------------------------------|-------------------------|
 | POST `/services`               | create | Креира нов сервис             | USER, ADMIN             |
-| PUT `/services/{id}/confirm`   | update | Потврдување на сервис         | USER, ADMIN             |
 | PUT `/services/{id}/cancel`    | update | Откажување на сервис           | USER, ADMIN             |
 | PUT `/services/{id}/start`     | update | Почеток на сервисот            | MECHANIC, ADMIN         |
 | PUT `/services/{id}/complete`  | update | Завршување на сервисот         | MECHANIC, ADMIN         |
