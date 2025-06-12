@@ -15,10 +15,6 @@ public class Service {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
-
-    private String location;
-
     private int price;
 
     private int nextServiceKm;
@@ -35,14 +31,11 @@ public class Service {
     @ManyToOne
     private User user;
 
-    public Service(String name, String location, int price, int nextServiceKm, ServiceType type, ServiceStatus status, Car car) {
-        this.name = name;
-        this.location = location;
+    public Service(int price, int nextServiceKm, ServiceType type, ServiceStatus status, Car car) {
         this.price = price;
         this.nextServiceKm = nextServiceKm;
         this.type = type;
         this.status = status;
         this.car = car;
     }
-
 }
