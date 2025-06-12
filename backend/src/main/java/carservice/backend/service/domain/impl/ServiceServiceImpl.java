@@ -49,7 +49,6 @@ public class ServiceServiceImpl implements ServiceService {
         return switch (type) {
             case OIL_CHANGE -> 10000;
             case BRAKE_SERVICE -> 7000;
-            case GENERAL_CHECKUP -> 40000;
             default -> 0;
         };
     }
@@ -97,7 +96,7 @@ public class ServiceServiceImpl implements ServiceService {
                 .orElseThrow(() -> new IllegalArgumentException("Car not found"));
 
         int calculatedPrice = calculatePrice(service.getType());
-        int calculatedNextServiceKm = calculateNextService(service.getType());
+        int calculatedNextServiceKm = calculateNextService(service.getType()) + service.getCar().getCurrentKm();
 
         service.setPrice(calculatedPrice);
         service.setNextServiceKm(calculatedNextServiceKm);

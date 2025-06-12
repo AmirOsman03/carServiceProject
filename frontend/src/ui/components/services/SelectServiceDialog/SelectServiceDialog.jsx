@@ -31,23 +31,7 @@ const SelectServiceDialog = ({open, onClose, car, addToService}) => {
                 />
             </Box>
             <DialogTitle align="center" fontSize={"xx-large"} fontWeight="bold">Select service</DialogTitle>
-            <DialogContent>
-                <TextField
-                    margin="dense"
-                    label="Enter your name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    fullWidth
-                />
-                <TextField
-                    margin="dense"
-                    label="Enter your location"
-                    name="location"
-                    value={formData.location}
-                    onChange={handleChange}
-                    fullWidth
-                />
+            <DialogContent sx={{width: 350}}>
                 <TextField
                     select
                     margin="dense"
@@ -66,10 +50,12 @@ const SelectServiceDialog = ({open, onClose, car, addToService}) => {
             </DialogContent>
             <Box sx={{display: "flex", justifyContent: "center", marginBottom: 2}}>
                 <DialogActions>
-                    <Button onClick={onClose} variant="contained" color="inherit" size="large"
-                            sx={{marginInlineEnd: 2}}>Cancel</Button>
-                    <Button onClick={handleSubmit} color="success" variant="contained"
-                            size="large">Confirm</Button>
+                    <Button onClick={onClose} variant="contained" color="inherit" sx={{marginInlineEnd: 2}} size={"large"}>
+                        Cancel
+                    </Button>
+                    <Button onClick={handleSubmit} color="success" variant="contained" size={"large"}>
+                        Confirm
+                    </Button>
                 </DialogActions>
             </Box>
         </Dialog>

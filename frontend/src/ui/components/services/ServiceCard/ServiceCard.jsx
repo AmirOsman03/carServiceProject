@@ -26,13 +26,10 @@ const ServiceCard = ({service, onCancel, onStart, onComplete}) => {
                 </Box>
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div" align="center">
-                        {service.name}
+                        {service.username}
                     </Typography>
                     <Typography variant="body1" sx={{color: 'text.secondary'}} align="center">
                         {service.manufacturer}
-                    </Typography>
-                    <Typography variant="body1" sx={{color: 'text.secondary'}} align="center">
-                        <b>Location:</b> {service.location}
                     </Typography>
                     <Typography variant="body1" sx={{color: 'text.secondary'}} align="center">
                         <b>Price:</b> {service.price} den

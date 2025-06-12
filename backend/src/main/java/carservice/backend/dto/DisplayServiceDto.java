@@ -11,8 +11,6 @@ import java.util.stream.Collectors;
 
 public record DisplayServiceDto(
         Long id,
-        String name,
-        String location,
         int price,
         int nextServiceKm,
         ServiceType type,
@@ -23,8 +21,6 @@ public record DisplayServiceDto(
     public static DisplayServiceDto from(Service service) {
         return new DisplayServiceDto(
                 service.getId(),
-                service.getName(),
-                service.getLocation(),
                 service.getPrice(),
                 service.getNextServiceKm(),
                 service.getType(),
@@ -39,7 +35,7 @@ public record DisplayServiceDto(
     }
 
     public Service toService(Car car) {
-        return new Service(name,location,price,nextServiceKm, type, status, car);
+        return new Service(price,nextServiceKm, type, status, car);
     }
 
 }

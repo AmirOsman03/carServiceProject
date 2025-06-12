@@ -45,4 +45,11 @@ public class Service {
         this.car = car;
     }
 
+    public Service(int price, int nextServiceKm, ServiceType type, ServiceStatus status, Car car) {
+        this.price = price;
+        this.nextServiceKm = nextServiceKm;
+        this.type = type;
+        this.status = status;
+        this.car = car;
+    }
 }
