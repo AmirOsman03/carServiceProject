@@ -30,4 +30,4 @@ This web application allows users to register their cars, schedule and track ser
   ## 🧱 Technologies Used
   - **Backend**: Spring Boot
   - **Frontend**: React
-  - **Database**: MySQL
+  - **Database**: PostgreSQL
