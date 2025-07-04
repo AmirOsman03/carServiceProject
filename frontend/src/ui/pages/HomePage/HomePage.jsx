@@ -1,31 +1,47 @@
 import React from 'react';
 import {Box, Button, Container, Paper, Typography} from "@mui/material";
+import {useNavigate} from "react-router";
 
 const HomePage = () => {
+    const navigate = useNavigate();
+
+    const nav = () => {
+        navigate("/services")
+    }
+
     return (
-        <Box sx={{backgroundImage: 'url(https://www.workingnation.com/wp-content/uploads/elementor/thumbs/Auto-Mechanic-1-ph7v81qxnj1f457v6ijzzqbfpq3vnpmaxcqmlf356o.png)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            height: '50vh',
-            width: '100%'
-        }}>
-            <Container maxWidth="xl" sx={{mt: 3, py: 3}}>
-                <Box sx={{display: "flex", justifyContent: "center"}}>
-                    <Typography variant="h4" gutterBottom fontWeight="bolder" sx={{color: "white", mt:5, pt:5}}>
-                        Welcome to Car service
-                    </Typography>
-                </Box>
-                <Box sx={{display: "flex", justifyContent: "center", mt: 2, color: "white"}}>
-                    <Typography fontSize="large" gutterBottom>
-                        Experience the difference with our professional automotive services and
-                        maintenance
-                    </Typography>
-                </Box>
-                <Box sx={{display: "flex", justifyContent: "center", mt: 2}}>
-                    <Button variant="outlined" sx={{color: "white", borderColor: "white"}}>
-                        LEARN MORE
-                    </Button>
+        <Box sx={{minHeight: "100vh", my: 3}}>
+            <Container maxWidth="xl">
+                <Box
+                    sx={{
+                        display: "grid",
+                        gridTemplateColumns: {xs: "1fr", md: "1fr 1fr"}, // 1 колона на мобилен, 2 на desktop
+                        gap: 5,
+                        alignItems: "center"
+                    }}
+                >
+                    <Box>
+                        <Typography variant="h2" fontWeight="light" color="black" gutterBottom>
+                            Welcome to Car Service
+                        </Typography>
+                        <Typography fontSize="large" color="black" gutterBottom>
+                            Keep your vehicle in top shape — make your service appointment today.
+                        </Typography>
+                        <Button onClick={nav} variant="outlined" color={"inherit"} sx={{mt: 3}}>
+                            Explore services
+                        </Button>
+                    </Box>
+                    <Box sx={{boxShadow:"5", borderRadius: "16px"}}>
+                        <img
+                            src={"src/assets/service.jpg"}
+                            alt=""
+                            style={{
+                                width: "100%",
+                                height: "50vh",
+                                borderRadius: "16px"
+                            }}
+                        />
+                    </Box>
                 </Box>
             </Container>
         </Box>
