@@ -3,34 +3,22 @@ import {useNavigate, useParams} from "react-router";
 import {
     Box,
     Button,
-    Card,
-    CardContent,
-    Chip,
     CircularProgress,
-    Divider,
     Grid,
     Typography,
     Paper,
-    Avatar,
     Stack,
-    Rating,
     Breadcrumbs,
     Link
 } from "@mui/material";
 import {
     ArrowBack,
-    Category,
-    Factory,
-    Star,
-    ShoppingCart,
-    FavoriteBorder,
-    Share
 } from "@mui/icons-material";
 import useCarDetails from "../../../../hooks/useCarDetails.js";
 import ManageAccountsTwoToneIcon from '@mui/icons-material/ManageAccountsTwoTone';
 import SelectServiceDialog from "../../services/SelectServiceDialog/SelectServiceDialog.jsx";
-import DirectionsCarFilledTwoToneIcon from "@mui/icons-material/DirectionsCarFilledTwoTone";
 import useAddToService from "../../../../hooks/useAddToService.js";
+import carImage from "../../../../assets/car.webp"
 
 const CarDetails = () => {
     const {id} = useParams();
@@ -71,22 +59,17 @@ const CarDetails = () => {
                     <Typography color="text.primary">{car.manufacturer}</Typography>
                 </Breadcrumbs>
 
-                <Paper elevation={2} sx={{p: 4, borderRadius: 4}}>
+                <Paper elevation={2} sx={{p: 4, borderRadius: 4, boxShadow: "15"}}>
                     <Grid container spacing={4}>
                         <Grid size={{xs: 12, md: 3}}>
                             <Box sx={{
                                 display: 'flex',
                                 justifyContent: 'center',
                                 mb: 4,
-                                p: 3,
-                                borderRadius: 3,
-                                boxShadow: 1
+
                             }}>
                                 <Box sx={{display: "flex", justifyContent: "center", alignItems: "center"}}>
-                                    <DirectionsCarFilledTwoToneIcon
-                                        fontSize="large"
-                                        sx={{fontSize: 200, marginTop: 2}}
-                                    />
+                                    <img src={carImage} alt={""} style={{height: "250px", width: "100%", borderRadius: "16px",}}/>
                                 </Box>
                             </Box>
                         </Grid>

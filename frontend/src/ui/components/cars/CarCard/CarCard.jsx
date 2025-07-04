@@ -19,10 +19,7 @@ const CarCard = ({car, onEdit, onDelete}) => {
         <>
             <Paper sx={{maxWidth: 345, borderRadius: 2, marginBottom: 4}} elevation={5}>
                 <Box sx={{display: "flex", justifyContent: "center", alignItems: "center"}}>
-                    <DirectionsCarFilledTwoToneIcon
-                        fontSize="large"
-                        sx={{fontSize: 170, marginTop: 2}}
-                    />
+                    <img src={"src/assets/car.webp"} alt={""} style={{height: "250px", width: "100%"}}/>
                 </Box>
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
