@@ -1,6 +1,8 @@
 import React from 'react';
-import {Box, Button, Container, Paper, Typography} from "@mui/material";
+import {Box, Button, Container, Typography} from "@mui/material";
 import {useNavigate} from "react-router";
+import StatsSection from "../../components/statistics/StatsSection.jsx";
+import Testimonials from "../../components/testimonials/Testimonials.jsx";
 
 const HomePage = () => {
     const navigate = useNavigate();
@@ -15,7 +17,7 @@ const HomePage = () => {
                 <Box
                     sx={{
                         display: "grid",
-                        gridTemplateColumns: {xs: "1fr", md: "1fr 1fr"}, // 1 колона на мобилен, 2 на desktop
+                        gridTemplateColumns: {xs: "1fr", md: "1fr 1fr"},
                         gap: 5,
                         alignItems: "center"
                     }}
@@ -31,18 +33,20 @@ const HomePage = () => {
                             Explore services
                         </Button>
                     </Box>
-                    <Box sx={{boxShadow:"5", borderRadius: "16px"}}>
+                    <Box sx={{boxShadow: "5", borderRadius: "16px"}}>
                         <img
                             src={"src/assets/service.jpg"}
                             alt=""
                             style={{
                                 width: "100%",
-                                height: "50vh",
+                                height: "40vh",
                                 borderRadius: "16px"
                             }}
                         />
                     </Box>
                 </Box>
+                <Testimonials/>
+                <StatsSection/>
             </Container>
         </Box>
     );
