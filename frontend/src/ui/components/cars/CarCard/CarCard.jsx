@@ -17,9 +17,9 @@ const CarCard = ({car, onEdit, onDelete}) => {
 
     return (
         <>
-            <Paper sx={{maxWidth: 345, borderRadius: 2, marginBottom: 4}} elevation={5}>
+            <Paper sx={{maxWidth: 345, borderRadius: 2, my: 4}} elevation={5}>
                 <Box sx={{display: "flex", justifyContent: "center", alignItems: "center"}}>
-                    <img src={"src/assets/car.webp"} alt={""} style={{height: "250px", width: "100%"}}/>
+                    <img src={"src/assets/car.webp"} alt={""} style={{height: "280px", width: "100%"}}/>
                 </Box>
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">

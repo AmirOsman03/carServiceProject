@@ -69,7 +69,7 @@ const CarDetails = () => {
 
                             }}>
                                 <Box sx={{display: "flex", justifyContent: "center", alignItems: "center"}}>
-                                    <img src={carImage} alt={""} style={{height: "250px", width: "100%", borderRadius: "16px",}}/>
+                                    <img src={carImage} alt={""} style={{height: "280px", width: "100%", borderRadius: "16px",}}/>
                                 </Box>
                             </Box>
                         </Grid>

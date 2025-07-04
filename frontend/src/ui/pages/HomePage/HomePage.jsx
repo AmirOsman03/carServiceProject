@@ -12,7 +12,7 @@ const HomePage = () => {
     }
 
     return (
-        <Box sx={{minHeight: "100vh", my: 3}}>
+        <Box sx={{minHeight: "100vh", my: 4}}>
             <Container maxWidth="xl">
                 <Box
                     sx={{
