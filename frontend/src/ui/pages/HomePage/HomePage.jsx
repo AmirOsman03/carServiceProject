@@ -33,17 +33,26 @@ const HomePage = () => {
                             Explore services
                         </Button>
                     </Box>
-                    <Box sx={{boxShadow: "5", borderRadius: "16px"}}>
+                    <Box
+                        sx={{
+                            borderRadius: "16px",
+                            boxShadow: "0 8px 24px rgba(255, 235, 59, 1.2)",
+                            overflow: "hidden",
+                            width: "100%",
+                        }}
+                    >
                         <img
                             src={"src/assets/service.jpg"}
                             alt=""
                             style={{
                                 width: "100%",
-                                height: "40vh",
-                                borderRadius: "16px"
+                                height: "50vh",
+                                objectFit: "cover",
+                                display: "block",
                             }}
                         />
                     </Box>
+
                 </Box>
                 <Testimonials/>
                 <StatsSection/>
