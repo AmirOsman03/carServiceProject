@@ -1,7 +1,6 @@
 import React from 'react';
-import {Link} from "react-router";
-import {AppBar, Box, Button, IconButton, Toolbar, Typography} from "@mui/material";
-import MenuIcon from '@mui/icons-material/Menu';
+import {NavLink} from "react-router";
+import {AppBar, Box, Button, Container, Toolbar} from "@mui/material";
 import "./Header.css";
 import AuthenticationToggle from "../../auth/AuthenticationToggle/AuthenticationToggle.jsx";
 
@@ -13,30 +12,41 @@ const pages = [
 
 const Header = () => {
     return (
-        <Box>
-            <AppBar position="static" sx={{backgroundColor: "#212121", color: "white"}}>
-                <Toolbar>
-                    <Typography variant="h6" component="div" sx={{mr: 3}}>
-                        Car Service
-                    </Typography>
-                    <Box sx={{
-                        flexGrow: 1,
-                        display: {xs: "none", md: "flex"},
-                        justifyContent: "space-evenly",
-                    }}>
-                        {pages.map((page) => (
-                            <Link key={page.name} to={page.path}>
-                                <Button
-                                    sx={{my: 2, color: "white", display: "block", textDecoration: "none"}}
+        <Box sx={{my: 2}}>
+            <Container
+                maxWidth="md"
+            >
+                <AppBar position="static" sx={{color: "black", backgroundColor: "white", borderRadius: "16px"}}>
+                    <Toolbar>
+                        <Box
+                            sx={{
+                                flexGrow: 1,
+                                display: "flex",
+                                justifyContent: "space-between",
+                            }}
+                        >
+                            {pages.map((page) => (
+                                <NavLink
+                                    key={page.name}
+                                    to={page.path}
+                                    style={({isActive}) => ({
+                                        textDecoration: "none",
+                                        color: isActive ? "gold" : "black",
+                                        borderBottom: isActive ? "3px solid gold" : "none",
+                                    })}
                                 >
-                                    {page.name}
-                                </Button>
-                            </Link>
-                        ))}
-                    </Box>
-                    <AuthenticationToggle/>
-                </Toolbar>
-            </AppBar>
+                                    <Button
+                                        sx={{color: "black", display: "block"}}
+                                    >
+                                        {page.name}
+                                    </Button>
+                                </NavLink>
+                            ))}
+                            <AuthenticationToggle/>
+                        </Box>
+                    </Toolbar>
+                </AppBar>
+            </Container>
         </Box>
     );
 };
