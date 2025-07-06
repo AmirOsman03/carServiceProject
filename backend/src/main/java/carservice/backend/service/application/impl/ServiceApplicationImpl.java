@@ -2,7 +2,7 @@ package carservice.backend.service.application.impl;
 
 import carservice.backend.dto.CreateServiceDto;
 import carservice.backend.dto.DisplayServiceDto;
-import carservice.backend.model.Car;
+import carservice.backend.model.domain.Car;
 import carservice.backend.model.enums.ServiceType;
 import carservice.backend.service.application.ServiceApplication;
 import carservice.backend.service.domain.CarService;

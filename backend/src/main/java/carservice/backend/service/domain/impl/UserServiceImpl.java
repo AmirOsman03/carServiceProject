@@ -1,6 +1,6 @@
 package carservice.backend.service.domain.impl;
 
-import carservice.backend.model.User;
+import carservice.backend.model.domain.User;
 import carservice.backend.model.enums.Role;
 import carservice.backend.model.exceptions.*;
 import carservice.backend.repository.UserRepository;

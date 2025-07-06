@@ -1,6 +1,6 @@
 package carservice.backend.service.domain;
 
-import carservice.backend.model.Service;
+import carservice.backend.model.domain.Service;
 import carservice.backend.model.enums.ServiceType;
 
 import java.util.List;

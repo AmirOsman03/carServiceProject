@@ -1,6 +1,6 @@
 package carservice.backend.service.domain.impl;
 
-import carservice.backend.model.Car;
+import carservice.backend.model.domain.Car;
 import carservice.backend.repository.CarRepository;
 import carservice.backend.service.domain.CarService;
 import org.springframework.stereotype.Service;

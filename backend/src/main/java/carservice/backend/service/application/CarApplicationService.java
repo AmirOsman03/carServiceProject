@@ -2,8 +2,7 @@ package carservice.backend.service.application;
 
 import carservice.backend.dto.CreateCarDto;
 import carservice.backend.dto.DisplayCarDto;
-import carservice.backend.model.Car;
-import carservice.backend.model.User;
+import carservice.backend.model.domain.User;
 
 import java.util.List;
 import java.util.Optional;

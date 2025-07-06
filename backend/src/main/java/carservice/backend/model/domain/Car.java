@@ -1,4 +1,4 @@
-package carservice.backend.model;
+package carservice.backend.model.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;

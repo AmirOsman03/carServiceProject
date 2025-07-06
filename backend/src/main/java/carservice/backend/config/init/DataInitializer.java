@@ -1,19 +1,11 @@
 package carservice.backend.config.init;
 
-import carservice.backend.model.Car;
-import carservice.backend.model.Service;
-import carservice.backend.model.User;
+import carservice.backend.model.domain.User;
 import carservice.backend.model.enums.Role;
-import carservice.backend.model.enums.ServiceStatus;
-import carservice.backend.model.enums.ServiceType;
-import carservice.backend.repository.CarRepository;
 import carservice.backend.repository.UserRepository;
 import jakarta.annotation.PostConstruct;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Component
 public class DataInitializer {
@@ -29,7 +21,7 @@ public class DataInitializer {
         this.passwordEncoder = passwordEncoder;
     }
 
-    @PostConstruct
+//    @PostConstruct
     public void init() {
         User admin = new User(
                 "admin",

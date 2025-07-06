@@ -1,6 +1,6 @@
 package carservice.backend.service.domain;
 
-import carservice.backend.model.Car;
+import carservice.backend.model.domain.Car;
 
 import java.util.List;
 import java.util.Optional;

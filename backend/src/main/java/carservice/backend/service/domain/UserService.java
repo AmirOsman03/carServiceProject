@@ -1,6 +1,6 @@
 package carservice.backend.service.domain;
 
-import carservice.backend.model.User;
+import carservice.backend.model.domain.User;
 import carservice.backend.model.enums.Role;
 import org.springframework.security.core.userdetails.UserDetailsService;
 

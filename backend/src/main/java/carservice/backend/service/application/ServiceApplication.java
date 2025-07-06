@@ -2,7 +2,6 @@ package carservice.backend.service.application;
 
 import carservice.backend.dto.CreateServiceDto;
 import carservice.backend.dto.DisplayServiceDto;
-import carservice.backend.model.Service;
 import carservice.backend.model.enums.ServiceType;
 
 import java.util.List;

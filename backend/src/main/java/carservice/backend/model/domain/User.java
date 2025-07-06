@@ -1,4 +1,4 @@
-package carservice.backend.model;
+package carservice.backend.model.domain;
 
 import carservice.backend.model.enums.Role;
 import com.fasterxml.jackson.annotation.JsonIgnore;

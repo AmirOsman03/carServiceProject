@@ -8,6 +8,7 @@ import PlayCircleOutlineTwoToneIcon from '@mui/icons-material/PlayCircleOutlineT
 import CheckTwoToneIcon from '@mui/icons-material/CheckTwoTone';
 import CompleteServiceDialog from "../CompleteServiceDialog/CompleteServiceDialog.jsx";
 import useUserDetails from "../../../../hooks/useUserDetails.js";
+import { formatDistanceToNow } from 'date-fns';
 
 const ServiceCard = ({service, onCancel, onStart, onComplete}) => {
     const {role} = useUserDetails();
@@ -50,6 +51,9 @@ const ServiceCard = ({service, onCancel, onStart, onComplete}) => {
                                         : "default"
                         }
                     />
+                    <Typography variant="body2" color="text.secondary" align="center" sx={{mt: 1}}>
+                        Last updated: {formatDistanceToNow(new Date(service.updatedAt), { addSuffix: true })}
+                    </Typography>
                 </CardContent>
                 <Box sx={{display: "flex", justifyContent: "center", pb:1}}>
                     <CardActions>

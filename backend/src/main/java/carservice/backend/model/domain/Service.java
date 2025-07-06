@@ -1,14 +1,19 @@
-package carservice.backend.model;
+package carservice.backend.model.domain;
 
 import carservice.backend.model.enums.ServiceStatus;
 import carservice.backend.model.enums.ServiceType;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import java.time.LocalDateTime;
 
 @Data
 @Entity
 @NoArgsConstructor
+@EntityListeners(AuditingEntityListener.class)
 public class Service {
 
     @Id
@@ -18,6 +23,9 @@ public class Service {
     private int price;
 
     private int nextServiceKm;
+
+    @LastModifiedDate
+    private LocalDateTime updatedAt;
 
     @Enumerated(EnumType.STRING)
     private ServiceType type;
@@ -38,4 +46,5 @@ public class Service {
         this.status = status;
         this.car = car;
     }
+
 }

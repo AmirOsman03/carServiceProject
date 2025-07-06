@@ -1,6 +1,6 @@
 package carservice.backend.dto;
 
-import carservice.backend.model.User;
+import carservice.backend.model.domain.User;
 import carservice.backend.model.enums.Role;
 
 public record CreateUserDto(
