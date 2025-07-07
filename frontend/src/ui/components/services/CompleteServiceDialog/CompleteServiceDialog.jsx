@@ -1,4 +1,3 @@
-import React from 'react';
 import {
     Box,
     Button,
@@ -6,15 +5,12 @@ import {
     DialogActions,
     DialogContent,
     DialogContentText,
-    DialogTitle,
-    Grid, Icon,
-    Typography
+    Grid
 } from "@mui/material";
 import CheckTwoToneIcon from '@mui/icons-material/CheckTwoTone';
 
 
 const CompleteServiceDialog = ({open, onClose, service, onComplete}) => {
-
     const handleSubmit = () => {
         onComplete(service.id)
         onClose();
@@ -40,16 +36,28 @@ const CompleteServiceDialog = ({open, onClose, service, onComplete}) => {
                         </DialogContentText>
                         <Box sx={{display: "flex", justifyContent: "center"}}>
                             <DialogActions>
-                                <Button onClick={onClose} variant="contained" color="inherit" size="large"
-                                        sx={{marginInlineEnd: 2}}>Cancel</Button>
-                                <Button onClick={handleSubmit} color="success" variant="contained"
-                                        size="large">Confirm</Button>
+                                <Button
+                                    onClick={onClose}
+                                    variant="contained"
+                                    color="inherit"
+                                    size="large"
+                                    sx={{marginInlineEnd: 2}}
+                                >
+                                    Cancel
+                                </Button>
+                                <Button
+                                    onClick={handleSubmit}
+                                    color="success"
+                                    variant="contained"
+                                    size="large"
+                                >
+                                    Confirm
+                                </Button>
                             </DialogActions>
                         </Box>
                     </DialogContent>
                 </Grid>
             </Grid>
-            {/*<DialogTitle>Delete Product</DialogTitle>*/}
         </Dialog>
     );
 };

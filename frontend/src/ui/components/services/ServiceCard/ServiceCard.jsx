@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
-import {Box, Button, Card, CardActions, CardContent, CardMedia, Chip, Grid, Paper, Typography} from "@mui/material";
-import PersonOutlineTwoToneIcon from '@mui/icons-material/PersonOutlineTwoTone';
+import {Box, Button, CardActions, CardContent, Chip, Paper, Typography} from "@mui/material";
 import CancelServiceDialog from "../CancelServiceDialog/CancelServiceDialog.jsx";
 import StartServiceDialog from "../StartServiceDialog/StartServiceDialog.jsx";
 import CloseTwoToneIcon from '@mui/icons-material/CloseTwoTone';
