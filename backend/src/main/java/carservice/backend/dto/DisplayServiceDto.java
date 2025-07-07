@@ -1,11 +1,11 @@
 package carservice.backend.dto;
 
-import carservice.backend.model.Car;
-import carservice.backend.model.Service;
-import carservice.backend.model.User;
+import carservice.backend.model.domain.Car;
+import carservice.backend.model.domain.Service;
 import carservice.backend.model.enums.ServiceStatus;
 import carservice.backend.model.enums.ServiceType;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,7 +16,8 @@ public record DisplayServiceDto(
         ServiceType type,
         ServiceStatus status,
         String manufacturer,
-        String username
+        String username,
+        LocalDateTime updatedAt
 ) {
     public static DisplayServiceDto from(Service service) {
         return new DisplayServiceDto(
@@ -26,7 +27,8 @@ public record DisplayServiceDto(
                 service.getType(),
                 service.getStatus(),
                 service.getCar().getManufacturer(),
-                service.getCar().getUser().getUsername()
+                service.getCar().getUser().getUsername(),
+                service.getUpdatedAt()
         );
     }
 

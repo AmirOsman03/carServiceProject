@@ -1,7 +1,7 @@
 package carservice.backend.service.domain.impl;
 
-import carservice.backend.model.Car;
-import carservice.backend.model.Service;
+import carservice.backend.model.domain.Car;
+import carservice.backend.model.domain.Service;
 import carservice.backend.model.enums.ServiceStatus;
 import carservice.backend.model.enums.ServiceType;
 import carservice.backend.repository.CarRepository;

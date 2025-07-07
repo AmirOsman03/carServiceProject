@@ -1,7 +1,7 @@
 package carservice.backend.service.application.impl;
 
 import carservice.backend.helpers.JwtHelper;
-import carservice.backend.model.User;
+import carservice.backend.model.domain.User;
 import carservice.backend.dto.CreateUserDto;
 import carservice.backend.dto.DisplayUserDto;
 import carservice.backend.dto.LoginResponseDto;

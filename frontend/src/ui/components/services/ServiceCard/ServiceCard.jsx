@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
-import {Box, Button, Card, CardActions, CardContent, CardMedia, Chip, Grid, Paper, Typography} from "@mui/material";
-import PersonOutlineTwoToneIcon from '@mui/icons-material/PersonOutlineTwoTone';
+import {Box, Button, CardActions, CardContent, Chip, Paper, Typography} from "@mui/material";
 import CancelServiceDialog from "../CancelServiceDialog/CancelServiceDialog.jsx";
 import StartServiceDialog from "../StartServiceDialog/StartServiceDialog.jsx";
 import CloseTwoToneIcon from '@mui/icons-material/CloseTwoTone';
@@ -8,6 +7,7 @@ import PlayCircleOutlineTwoToneIcon from '@mui/icons-material/PlayCircleOutlineT
 import CheckTwoToneIcon from '@mui/icons-material/CheckTwoTone';
 import CompleteServiceDialog from "../CompleteServiceDialog/CompleteServiceDialog.jsx";
 import useUserDetails from "../../../../hooks/useUserDetails.js";
+import { formatDistanceToNow } from 'date-fns';
 
 const ServiceCard = ({service, onCancel, onStart, onComplete}) => {
     const {role} = useUserDetails();
@@ -17,20 +17,14 @@ const ServiceCard = ({service, onCancel, onStart, onComplete}) => {
 
     return (
         <>
-            <Paper sx={{maxWidth: 345, borderRadius: 2, marginBottom: 4}} elevation={5}>
+            <Paper sx={{maxWidth: 345, borderRadius: "16px", my: 4, boxShadow: 15}} elevation={5}>
                 <Box sx={{display: "flex", justifyContent: "center", alignItems: "center"}}>
-                    <PersonOutlineTwoToneIcon
-                        fontSize="large"
-                        sx={{fontSize: 170, marginTop: 2}}
-                    />
+                    <img src={"src/assets/tick.png"} alt={""} style={{height: "250px", width: "70%"}}/>
                 </Box>
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div" align="center">
                         {service.username}
                     </Typography>
-                    {/*<Typography variant="body1" sx={{color: 'text.secondary'}} align="center">*/}
-                    {/*    {service.manufacturer}*/}
-                    {/*</Typography>*/}
                     <Box sx={{display: "flex", justifyContent: "center", my: 1}}>
                         <Chip label={`${service.manufacturer}`} color="default" variant="inlined" sx={{px:3}}/>
                     </Box>
@@ -56,6 +50,9 @@ const ServiceCard = ({service, onCancel, onStart, onComplete}) => {
                                         : "default"
                         }
                     />
+                    <Typography variant="body2" color="text.secondary" align="center" sx={{mt: 1}}>
+                        Last updated: {formatDistanceToNow(new Date(service.updatedAt), { addSuffix: true })}
+                    </Typography>
                 </CardContent>
                 <Box sx={{display: "flex", justifyContent: "center", pb:1}}>
                     <CardActions>

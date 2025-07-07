@@ -4,7 +4,7 @@ import carservice.backend.dto.CreateUserDto;
 import carservice.backend.dto.DisplayUserDto;
 import carservice.backend.dto.LoginResponseDto;
 import carservice.backend.dto.LoginUserDto;
-import carservice.backend.model.User;
+import carservice.backend.model.domain.User;
 import carservice.backend.model.exceptions.InvalidArgumentsException;
 import carservice.backend.model.exceptions.InvalidUserCredentialsException;
 import carservice.backend.model.exceptions.PasswordsDoNotMatchException;

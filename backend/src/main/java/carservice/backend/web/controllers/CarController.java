@@ -4,7 +4,7 @@ import carservice.backend.dto.CreateCarDto;
 import carservice.backend.dto.CreateServiceDto;
 import carservice.backend.dto.DisplayCarDto;
 import carservice.backend.dto.DisplayServiceDto;
-import carservice.backend.model.User;
+import carservice.backend.model.domain.User;
 import carservice.backend.repository.UserRepository;
 import carservice.backend.service.application.CarApplicationService;
 import carservice.backend.service.application.ServiceApplication;

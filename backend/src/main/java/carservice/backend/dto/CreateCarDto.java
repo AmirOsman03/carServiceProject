@@ -1,7 +1,7 @@
 package carservice.backend.dto;
 
-import carservice.backend.model.Car;
-import carservice.backend.model.User;
+import carservice.backend.model.domain.Car;
+import carservice.backend.model.domain.User;
 
 import java.util.List;
 import java.util.stream.Collectors;

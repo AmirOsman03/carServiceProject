@@ -2,11 +2,10 @@ package carservice.backend.service.application.impl;
 
 import carservice.backend.dto.CreateCarDto;
 import carservice.backend.dto.DisplayCarDto;
-import carservice.backend.model.User;
+import carservice.backend.model.domain.User;
 import carservice.backend.repository.UserRepository;
 import carservice.backend.service.application.CarApplicationService;
 import carservice.backend.service.domain.CarService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

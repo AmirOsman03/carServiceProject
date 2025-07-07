@@ -2,7 +2,7 @@ package carservice.backend.web.filters;
 
 import carservice.backend.constants.JwtConstants;
 import carservice.backend.helpers.JwtHelper;
-import carservice.backend.model.User;
+import carservice.backend.model.domain.User;
 import carservice.backend.service.domain.UserService;
 import io.jsonwebtoken.JwtException;
 import jakarta.servlet.FilterChain;

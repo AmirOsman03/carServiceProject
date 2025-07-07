@@ -39,17 +39,28 @@ const CancelServiceDialog = ({open, onClose, service, onCancel}) => {
                         </DialogContentText>
                         <Box sx={{display: "flex", justifyContent: "center"}}>
                             <DialogActions>
-                                <Button onClick={onClose} variant="contained" color="inherit" size="large"
-                                        sx={{marginInlineEnd: 2}}>Cancel</Button>
-                                <Button onClick={handleSubmit} color="success" variant="contained"
-                                        size="large">Confirm</Button>
+                                <Button
+                                    onClick={onClose}
+                                    variant="contained"
+                                    color="inherit"
+                                    size="large"
+                                    sx={{marginInlineEnd: 2}}
+                                >
+                                    Cancel
+                                </Button>
+                                <Button
+                                    onClick={handleSubmit}
+                                    color="success"
+                                    variant="contained"
+                                    size="large"
+                                >
+                                    Confirm
+                                </Button>
                             </DialogActions>
                         </Box>
-
                     </DialogContent>
                 </Grid>
             </Grid>
-            {/*<DialogTitle>Delete Product</DialogTitle>*/}
         </Dialog>
     );
 };
